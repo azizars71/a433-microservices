@@ -1,0 +1,20 @@
+version: '3.8' # versi compose >=2
+
+services:
+  item-db:
+    image: mongo:3 # menggunakan image mongo:3
+    volumes:
+      - app-db:/data/db # menggunakan volume app-db dengan target /data/db
+    restart: always # memastikan container selalu restart
+
+  item-app:
+    image: azizars71/item-app:v1 # menggunakan image item-app:v1 yang telah di-build
+    ports:
+      - 80:8080 # menembak port 8080 container untuk diakses dari port 80 host
+    working_dir: /app # memastikan working dir di /app
+    volumes:
+      - ./:/app # mengikat volume dari pwd
+    restart: always # memastikan container selalu restart
+
+volumes:
+  app-db: # volume app-db
