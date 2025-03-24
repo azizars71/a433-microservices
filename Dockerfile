@@ -18,3 +18,6 @@ EXPOSE 8080
 
 # meluncurkan server dengan npm start
 CMD ["npm", "start"]
+
+# menghubungkan container image dengan repo
+LABEL org.opencontainers.image.source https://github.com/azizars71/a433-microservices

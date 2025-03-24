@@ -13,15 +13,10 @@ echo ""
 
 # mengubah nama image agar sesuai dengan format
 echo "Mengubah tag item-app sesuai format"
-docker tag item-app:v1 azizars71/item-app:v1
-echo ""
-
-# login ke docker hub
-echo "Login Docker Hub"
-echo $PASSWORD_DOCKER_HUB | docker login -u azizars71 --password-stdin #login
+docker tag item-app:v1 ghcr.io/azizars71/a433-microservices/item-app:v1
 echo ""
 
 # mengunggah image ke docker hub
 echo "Unggah image ke docker hub"
-docker push azizars71/item-app:v1
+docker push ghcr.io/azizars71/a433-microservices/item-app:v1
 echo "Unggah selesai!"

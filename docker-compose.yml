@@ -8,7 +8,7 @@ services:
     restart: always # memastikan container selalu restart
 
   item-app:
-    image: azizars71/item-app:v1 # menggunakan image item-app:v1 yang telah di-build
+    image: ghcr.io/azizars71/a433-microservices/item-app:v1 # menggunakan image item-app:v1 yang telah di-build
     ports:
       - 80:8080 # menembak port 8080 container untuk diakses dari port 80 host
     working_dir: /app # memastikan working dir di /app
