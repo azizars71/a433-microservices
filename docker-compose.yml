@@ -14,6 +14,8 @@ services:
     working_dir: /app # memastikan working dir di /app
     volumes:
       - ./:/app # mengikat volume dari pwd
+    depends_on:
+      - item-db # menunggu item-db aktif sebelum jalan
     restart: always # memastikan container selalu restart
 
 volumes:
