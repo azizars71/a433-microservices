@@ -1,6 +1,9 @@
 # menggunakan image node 14
 FROM node:14-alpine
 
+# menghubungkan container image dengan repo
+LABEL org.opencontainers.image.source="https://github.com/azizars71/a433-microservices"
+
 # menggunakan /app working dir
 WORKDIR /app
 
@@ -18,6 +21,3 @@ EXPOSE 8080
 
 # meluncurkan server dengan npm start
 CMD ["npm", "start"]
-
-# menghubungkan container image dengan repo
-LABEL org.opencontainers.image.source https://github.com/azizars71/a433-microservices
