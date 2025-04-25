@@ -6,6 +6,11 @@ echo "PASTIKAN SUDAH EXPORT PASSWORD"
 # exit saat error
 set -e
 
+# loading env
+if [ -f .env ]; then
+    export $(cat .env | xargs)
+fi
+
 # variabel IMAGENAME
 IMAGE_NAME="azizars/karsajobs:latest"
 
