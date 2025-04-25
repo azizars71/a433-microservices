@@ -1,24 +1,29 @@
-name: CI Frontend
+name: CI Frontend # nama action
 
+# push ke karsajobs-ui
 on:
   push:
     branches: ['karsajobs-ui']
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # menggunakan latest ubuntu
     steps:
+      # checkout source agar dapat menggunakan resource dari repo
       - name: checkout-source
         uses: actions/checkout@v3
 
+      # linting terhadap dockerfile menggunakan hadolint
       - name: lint-dockerfile
         uses: hadolint/hadolint-action@v3.1.0
         with:
           dockerfile: Dockerfile
 
+      # memberikan izin execute pada script shell build-push karsajobs-ui
       - name: exec-script
         run: chmod +x ./build_push_image_karsajobs_ui.sh
 
+      # melaksanakan build-push karsajobs-ui dengan env yang ditentukan
       - name: build-app-karsajobs-ui
         env:
           GHCR_TOKEN: ${{ secrets.GHCR_TOKEN }}
