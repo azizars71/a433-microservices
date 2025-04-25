@@ -1,13 +1,5 @@
 #!/bin/bash
 
-# exit saat error
-set -e
-
-# loading env
-# if [ -f .env ]; then
-#     export $(cat .env | xargs)
-# fi
-
 # variabel IMAGENAME
 IMAGE_NAME="ghcr.io/azizars71/karsajobs:latest"
 
