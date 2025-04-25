@@ -3,15 +3,6 @@
 # exit saat error
 set -e
 
-# loading env
-if [ -f .env ]; then
-    export $(cat .env | xargs)
-fi
-
-if [ -f .env.local ]; then
-    export $(cat .env.local | xargs)
-fi
-
 # variabel IMAGENAME
 IMAGE_NAME="ghcr.io/azizars71/karsajobs-ui:latest"
 
