@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Peringatan
-echo "PASTIKAN SUDAH EXPORT PASSWORD"
-
 # exit saat error
 set -e
 
@@ -12,18 +9,18 @@ if [ -f .env ]; then
 fi
 
 # variabel IMAGENAME
-IMAGE_NAME="azizars/karsajobs:latest"
+IMAGE_NAME="ghcr.io/azizars71/karsajobs:latest"
 
 # build image
 echo "Membangun image Docker: $IMAGE_NAME"
 docker build -t $IMAGE_NAME .
 
-# login ke docker hub, password telah disimpan ke env
-echo "Login ke Docker Hub"
-echo "$PASSWORD_DOCKER_HUB" | docker login -u azizars --password-stdin
+# login ke Github Packages, token telah disimpan ke env
+echo "Login ke Github"
+echo "$GHCR_TOKEN" | docker login ghcr.io -u azizars71 --password-stdin
 
-# push ke Docker Hub
-echo "Push ke Docker Hub dengan nama $IMAGE_NAME"
+# push ke Github Packages
+echo "Push ke Github Packages dengan nama $IMAGE_NAME"
 docker push $IMAGE_NAME
 
 # SELESAI
