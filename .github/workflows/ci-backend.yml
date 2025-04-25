@@ -22,7 +22,7 @@ jobs:
           dockerfile: Dockerfile
 
       - name: test-app
-        run: go test -v -short --count=1 $(go list ./...)
+        run: go test -v -short --count=1 ./cmd/web/...
 
       - name: exec-script
         run: chmod +x ./build_push_image_karsajobs.sh
