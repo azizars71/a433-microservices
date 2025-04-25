@@ -14,12 +14,15 @@ jobs:
       - name: setup-go
         uses: actions/setup-go@v5
         with:
-          go-version: 1.20
+          go-version: 1.15
 
       - name: lint-dockerfile
         uses: hadolint/hadolint-action@v3.1.0
         with:
           dockerfile: Dockerfile
+
+      - name: test-app
+        run: go test -v -short --count=1 $(go list ./...)
 
       - name: exec-script
         run: chmod +x ./build_push_image_karsajobs.sh
@@ -28,6 +31,3 @@ jobs:
         env:
           GHCR_TOKEN: ${{ secrets.GHCR_TOKEN }}
         run: ./build_push_image_karsajobs.sh
-
-      - name: test-app
-        run: go test -v -short --count=1 $(go list ./...)
