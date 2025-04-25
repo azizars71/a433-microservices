@@ -21,9 +21,6 @@ jobs:
         with:
           dockerfile: Dockerfile
 
-      # - name: test-app
-      #   run: go test -v -short --count=1 $(go list ./...)
-
       - name: exec-script
         run: chmod +x ./build_push_image_karsajobs.sh
 
@@ -31,3 +28,6 @@ jobs:
         env:
           GHCR_TOKEN: ${{ secrets.GHCR_TOKEN }}
         run: ./build_push_image_karsajobs.sh
+
+      - name: test-app
+        run: go test -v -short --count=1 $(go list ./...)
