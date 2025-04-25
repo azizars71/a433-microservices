@@ -3,11 +3,11 @@
 # variabel IMAGENAME
 IMAGE_NAME="ghcr.io/azizars71/karsajobs:latest"
 
-# build image
+# build image sesuai dengan var IMAGENAME
 echo "Membangun image Docker: $IMAGE_NAME"
 docker build -t $IMAGE_NAME .
 
-# login ke Github Packages, token telah disimpan ke env
+# login ke Github Packages dengan token telah disimpan ke env
 echo "Login ke Github"
 echo "$GHCR_TOKEN" | docker login ghcr.io -u azizars71 --password-stdin
 
