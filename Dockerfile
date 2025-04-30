@@ -9,4 +9,5 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 EXPOSE 3000
-CMD ["node", "index.js"]
+CMD ["wait-for-it.sh", "rabbitmq:5672", "--timeout=30", "--", "node", "index.js"]
+
